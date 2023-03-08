@@ -3,4 +3,4 @@ for i in range(0, 99):
     if i < 10:
         print("0", end='')
     print("{:d}".format(i), end=', ')
-print(99)
+print("{:d}".format(i + 1))
