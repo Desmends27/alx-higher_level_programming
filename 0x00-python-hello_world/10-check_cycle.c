@@ -9,7 +9,8 @@ int check_cycle(listint_t *list)
 {
 	const listint_t *slow, *fast;
 	/* use hare and tortise algorithim */
-
+	if (list == NULL)
+		return 0;
 	fast = list->next;/* fast is always 2 steps ahead*/
 	slow = list;
 	while (fast != NULL && fast->next != NULL)
