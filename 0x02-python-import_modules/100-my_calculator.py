@@ -10,13 +10,13 @@ if __name__ == "__main__":
     b = int(argv[3])
     result = 0
     match(c):
-        case "+":
+        case '+':
             result = add(a, b)
-        case "-":
+        case '-':
             result = sub(a, b)
-        case "*":
+        case '*':
             result = mul(a, b)
-        case "/":
+        case '/':
             result = div(a, b)
         case _:
             print("Unknown operator. Available operators: +, -, * and /")
