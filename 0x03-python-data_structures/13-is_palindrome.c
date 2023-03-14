@@ -11,8 +11,10 @@ int is_palindrome(listint_t **head)
 	int list_num[1000];
 	int i = 0;
 
-	if (*head == NULL || (*head)->next == NULL)
+	if (*head == NULL)
 		return (0);
+	if ((*head)->next == NULL)
+		return (1);
 	slow = *head;
 	fast = *head;
 	while (fast != NULL && fast->next != NULL)
