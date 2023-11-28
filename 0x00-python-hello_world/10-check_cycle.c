@@ -1,24 +1,24 @@
 #include "lists.h"
-
 /**
- * check_cycle - check if a linked list is a cycle
- * @list: pointer to head node
- * Return: 0 if no cycle and 1 if there is a cycle
- */
+ * check_cycle - check if node has a cycle
+ * @list: head of linked list
+ * Return: 1 if cycle, 0 otherwise
+*/
 int check_cycle(listint_t *list)
 {
-	const listint_t *slow, *fast;
-	/* use hare and tortise algorithim */
-	if (list == NULL)
-		return 0;
-	fast = list->next;/* fast is always 2 steps ahead*/
-	slow = list;
-	while (fast != NULL && fast->next != NULL)
+	listint_t *slow;
+	listint_t *fast;
+
+	fast = list->next;
+	slow = list->next;
+
+	while (slow->next != NULL && fast->next != NULL)
 	{
-		if (slow == fast)
-			return (1);
 		slow = slow->next;
 		fast = fast->next->next;
+
+		if (fast == slow)
+			return (1);
 	}
 	return (0);
 }
