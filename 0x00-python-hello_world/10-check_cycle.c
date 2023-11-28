@@ -6,11 +6,13 @@
 */
 int check_cycle(listint_t *list)
 {
-	listint_t *slow;
-	listint_t *fast;
+	const listint_t *slow;
+	const listint_t *fast;
 
 	fast = list->next;
 	slow = list->next;
+	if (list == NULL)
+		return NULL;
 
 	while (fast->next != NULL && fast->next->next != NULL)
 	{
