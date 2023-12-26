@@ -1,3 +1,6 @@
+#!/usr/bin/pyton3
+'''Continuation of square class '''
+
 class Square:
     """Represent a square."""
 
