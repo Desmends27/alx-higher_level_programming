@@ -1,4 +1,4 @@
-#!/usr/bin/pyton3
+#!/usr/bin/python3
 '''Continuation of square class '''
 
 class Square:
