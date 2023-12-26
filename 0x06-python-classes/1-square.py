@@ -1,11 +1,12 @@
 #!/usr/bin/python3
-""" Create a python class with size attribute """
+""" Square defines a square object """
 
 
 class Square:
-    """ Create a square class
-        Args:
-            size: length of the one side of the square
+    """ Function takes in a private intstance  attribute siz
+    Args:
+        size: Size of the square
     """
+
     def __init__(self, size):
         self.__size = size

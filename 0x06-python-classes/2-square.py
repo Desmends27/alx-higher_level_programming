@@ -1,16 +1,23 @@
 #!/usr/bin/python3
-''' Create a square class based on 1-square.py '''
+"""Square class again but with a defined square
+    The size of the square is checked and errors are raised
+    based on input
+"""
 
 
 class Square:
-    ''' Square class
-    Args:
-        size: private instanse attribute, must be int and greater than 0
-    '''
+    """This is a the built in init function """
+
     def __init__(self, size=0):
+        """
+        Args:
+            size: private instance value of the square
+        Raises:
+            TypeError: if size argument is not integer
+            ValueError: if the size of the argument is less than 0
+        """
         if not isinstance(size, int):
             raise TypeError("size must be an integer")
-        elif size < 0:
+        if size < 0:
             raise ValueError("size must be >= 0")
-        else:
-            self.__size = size
+        self.__size = size

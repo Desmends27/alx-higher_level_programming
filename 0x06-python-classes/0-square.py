@@ -1,8 +1,8 @@
 #!/usr/bin/python3
-""" Defines the square class """
+"""This creates a Square class"""
 
 
 class Square:
-    """ Creates the square object """
-    def __init__(self):
-        pass
+    """This is a simple square class that can be used to define a square"""
+
+    pass
