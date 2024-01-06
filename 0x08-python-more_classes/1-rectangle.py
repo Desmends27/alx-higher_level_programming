@@ -3,7 +3,7 @@
 
 
 class Rectangle:
-    """ Create a rectangle class 
+    """ Create a rectangle class
     attrs:
     width: width of rectangle
     height: height of rectangle
