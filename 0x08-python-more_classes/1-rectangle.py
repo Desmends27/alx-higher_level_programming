@@ -9,15 +9,18 @@ class Rectangle:
     height: height of rectangle
     """
     def __init__(self, width=0, height=0):
+        """Special init method"""
         self.__height = height
         self.__width = width
 
     @property
     def height(self):
+        """height retriver"""
         return self.__height
 
     @property
     def width(self):
+        """width retriver"""
         return self.__width
 
     @height.setter
