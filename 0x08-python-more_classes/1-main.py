@@ -2,12 +2,7 @@
 Rectangle = __import__('1-rectangle').Rectangle
 
 try:
-    myrectangle = Rectangle(2, "3")
+    print("try")
+    myrectangle = Rectangle(2, -3)
 except Exception as e:
     print("[{}] {}".format(e.__class__.__name__, e))
-
-try:
-    myrectangle = Rectangle("2", 3)
-except Exception as e:
-    print("[{}] {}".format(e.__class__.__name__, e))
-
