@@ -1,0 +1,33 @@
+This is the `Text indentation` test
+===================================
+
+Using the `text indentation module`
+_________________________________
+
+Importing the `text indentatin` module:
+	>>> text_indentation = __import__("5-text_indentation").text_indentation
+
+Basic test:
+	>>> text_indentation("this.")
+	this.
+	<BLANKLINE>
+
+Test for regular string:
+	>>> text_indentation("this")
+	this
+
+Test non input:
+	>>> text_indentation()
+	Traceback (most recent call last):
+	...
+	TypeError: text_indentation() missing 1 required positional argument: 'text'
+
+Test for non string input:
+	>>> text_indentation(23)
+	Traceback (most recent call last):
+	...
+	TypeError: text must be a string
+	
+Test for blank line:
+	>>> text_indentation(" ")
+	<BLANKLINE>

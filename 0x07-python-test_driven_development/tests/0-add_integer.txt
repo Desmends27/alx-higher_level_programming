@@ -1,0 +1,69 @@
+he ``0-add_integer`` module
+===================
+
+Using ``add_integer``
+_____________________
+Importing the function from the module:
+	>>> add_integer = __import__("0-add_integer").add_integer
+
+Checking for docstring:
+	>>> mod = __import__("0-add_integer").__doc__
+	>>> len(mod) > 1
+	True
+
+Check for function docstring:
+	>>> func = __import__("0-add_integer").add_integer.__doc__
+	>>> len(func) > 1
+	True
+
+simple addition:
+        >>> add_integer(1, 5)
+        6
+
+integer addition:
+	>>> add_integer(-1, -2)
+	-3
+
+large number addition:
+	>>> add_integer(10000, 2000)
+	12000
+
+float number addition:
+	>>> add_integer(2.5, 4.5)
+	6
+
+addition different datatypes:
+	>>> add_integer("String", 5)
+	Traceback (most recent call last):
+	...
+	TypeError: a must be an integer
+
+addition different datatypes for b:
+	>>> add_integer(5.3, "string")
+	Traceback (most recent call last):
+	...
+	TypeError: b must be an integer
+
+float overflow:
+	>>> add_integer(1.0e308 + 1.0e308)
+	Traceback (most recent call last):
+	...
+	OverflowError: cannot convert float infinity to integer
+
+test for number of args:
+	>>> add_integer()
+	Traceback (most recent call last):
+	...
+	TypeError: add_integer() missing 1 required positional argument: 'a'
+
+Missing 1 args:
+	>>> add_integer(6)
+	Traceback (most recent call last):
+	...
+	ValueError: two numbers must be provided
+
+Nan to integer:
+	>>> add_integer(float('nan'), float('nan'))
+	Traceback (most recent call last):
+	...
+	ValueError: cannot convert float NaN to integer

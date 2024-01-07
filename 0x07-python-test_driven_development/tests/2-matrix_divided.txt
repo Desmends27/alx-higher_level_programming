@@ -1,0 +1,46 @@
+The ``2-matrix_divided`` module
+===============================
+
+Using ``matrix_divided`` function
+
+Import the funtion from the module:
+	>>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+
+Divide all elements of a 2x2 matrix by 2:
+	>>> matrix_divided([[1,2], [3,4]], 2)
+	[[0.5, 1.0], [1.5, 2.0]]
+
+Divide by a 3x3 matrix by 2:
+	>>> matrix_divided([[1, 2, 3],[3, 4, 5],[2, 7, 4]], 2)
+	[[0.5, 1.0, 1.5], [1.5, 2.0, 2.5], [1.0, 3.5, 2.0]]
+
+Divide all elements of a 3x2 matrix by 2:
+	>>> matrix_divided([[1,2], [1,5], [4, 6]], 2)
+	[[0.5, 1.0], [0.5, 2.5], [2.0, 3.0]]
+
+Matrix with non number elements:
+	>>> matrix_divided([[1,'3', 3], [2, 4, 2]], 2)
+	Traceback (most recent call last):
+	...
+	TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+Uneven matrix:
+	>>> matrix_divided([[2,4,5], [4, 2]], 2)
+	Traceback (most recent call last):
+	...
+	TypeError: matrix must have each row with the same size
+
+Divisor negative:
+	>>> matrix_divided([[2, 4, 5], [1, 4, 4]], 0)
+	Traceback (most recent call last):
+	...
+	ZeroDivisionError: division by zero
+
+Divisor none:
+	>>> matrix_divided([[2, 5, 6], [1, 3, 4]], None)
+	Traceback (most recent call last):
+	...
+	TypeError: div must be a number
+
+
+
