@@ -1,0 +1,82 @@
+This test the `integer validator` method
+========================================
+
+Uses the `BaseGeometry class`
+-----------------------------
+
+Importing the base class:
+	>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+Test for area:
+	>>> bg0 = BaseGeometry()
+	>>> bg0.area()
+	Traceback (most recent call last):
+	...
+	Exception: area() is not implemented
+
+Test for integer_validator()
+	>>> t = BaseGeometry()
+	>>> t.integer_validator()
+	Traceback (most recent call last):
+	...
+	TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+Only one argument:
+	>>> t2 = BaseGeometry()
+	>>> t2.integer_validator("test")
+	Traceback (most recent call last):
+	...
+	TypeError: integer_validator() missing 1 required positional argument: 'value'
+
+Test againts integer:
+	>>> bg = BaseGeometry()
+	>>> bg.integer_validator("test", 23)
+
+Test against non int:
+	>>> bg1 = BaseGeometry()
+	>>> bg1.integer_validator("test", "test")
+	Traceback (most recent call last):
+	...
+	TypeError: test must be an integer
+
+Test for value less than zero:
+	>>> bg2 = BaseGeometry()
+	>>> bg2.integer_validator("test", 0)
+	Traceback (most recent call last):
+	...
+	ValueError: test must be greater than 0
+
+Test for bool:
+	>>> b3 = BaseGeometry()
+	>>> b3.integer_validator("test", True)
+	Traceback (most recent call last):
+        ...
+        TypeError: test must be an integer
+
+Test for tuple:
+	>>> b4 = BaseGeometry()
+	>>> b4.integer_validator("test", (1,))
+	Traceback (most recent call last):
+        ...
+        TypeError: test must be an integer
+
+Test for list:
+	>>> b5 = BaseGeometry()
+	>>> b5.integer_validator("test", [1,2])
+	Traceback (most recent call last):
+        ...
+        TypeError: test must be an integer
+
+Test for None:
+	>>> b6 = BaseGeometry()
+	>>> b6.integer_validator("test", None)
+	Traceback (most recent call last):
+        ...
+        TypeError: test must be an integer
+
+Test for dict:
+	>>> b7 = BaseGeometry()
+	>>> b7.integer_validator("test", {3,2})
+	Traceback (most recent call last):
+	...
+	TypeError: test must be an integer
