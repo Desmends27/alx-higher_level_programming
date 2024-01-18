@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ Rectangle class that inherits form the Base class """
 
+
 from models.base import Base
 
 class Rectangle(Base):
@@ -17,12 +18,12 @@ class Rectangle(Base):
         self.__x = x
         self.__y = y
         super().__init__(id)
-    
+
     @property
     def width(self):
         """Getter for width"""
         return self.__width
-    
+
     @width.setter
     def width(self, value):
         """Setter for width"""
@@ -32,12 +33,12 @@ class Rectangle(Base):
             raise ValueError("width must be > 0")
         else:
             self.__width = value
-    
+
     @property
     def height(self):
         """Getter for height"""
         return self.__height
-    
+
     @height.setter
     def height(self, value):
         """Setter for height"""
@@ -52,7 +53,7 @@ class Rectangle(Base):
     def x(self):
         """Getter for x"""
         return self.__x
-    
+
     @x.setter
     def x(self, value):
         """Setter for x"""
@@ -62,12 +63,12 @@ class Rectangle(Base):
             raise ValueError("x must be >= 0")
         else:
             self.__x = value
-    
+
     @property
     def y(self):
         """Getter for y"""
         return self.__y
-    
+
     @y.setter
     def y(self, value):
         """Setter for y"""
