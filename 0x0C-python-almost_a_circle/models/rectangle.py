@@ -14,11 +14,15 @@ class Rectangle(Base):
     __y: y attribute of rectangle, private instance attribute
     """
     def __init__(self, width, height, x=0, y=0, id=None):
-        self.__width = width
-        self.__height = height
-        self.__x = x
-        self.__y = y
+        self.width = width
+        self.height = height
+        self.x = x
+        self.y = y
         super().__init__(id)
+
+    def __str__(self):
+        return f'[Rectangle] ({self.id}) {self.__x}/{self.__y}\
+                - {self.__width}/{self.__height}'
 
     @property
     def width(self):
@@ -28,12 +32,8 @@ class Rectangle(Base):
     @width.setter
     def width(self, value):
         """Setter for width"""
-        if not isinstance(value, int):
-            raise TypeError("width must be an integer")
-        elif value < 0:
-            raise ValueError("width must be > 0")
-        else:
-            self.__width = value
+        super().validator(value, 'width')
+        self.__width = value
 
     @property
     def height(self):
@@ -43,12 +43,8 @@ class Rectangle(Base):
     @height.setter
     def height(self, value):
         """Setter for height"""
-        if not isinstance(value, int):
-            raise TypeError("height must be an integer")
-        elif value < 0:
-            raise ValueError("height must be > 0")
-        else:
-            self.__height = value
+        super().validator(value, 'height')
+        self.__height = value
 
     @property
     def x(self):
@@ -58,12 +54,8 @@ class Rectangle(Base):
     @x.setter
     def x(self, value):
         """Setter for x"""
-        if not isinstance(value, int):
-            raise TypeError('x must be an integer')
-        elif value < 0:
-            raise ValueError("x must be >= 0")
-        else:
-            self.__x = value
+        super().validator2(value, 'x')
+        self.__x = value
 
     @property
     def y(self):
@@ -73,9 +65,37 @@ class Rectangle(Base):
     @y.setter
     def y(self, value):
         """Setter for y"""
-        if not isinstance(value, int):
-            raise TypeError('y must be an integer')
-        elif value < 0:
-            raise ValueError("y must be >= 0")
+        super().validator2(value, 'y')
+        self.__y = value
+
+    def area(self):
+        """Returns the area of the Rectangle instance"""
+        return (self.__width * self.__height)
+
+    def display(self):
+        """Prints the rectacle"""
+        for k in range(self.__y):
+            print()
+        for i in range(self.__height):
+            for k in range(self.__x):
+                print(' ', end="")
+            for j in range(self.width):
+                print('#', end="")
+            print()
+
+    def to_dictionary(self):
+        """ Returns the dictionary representatin of a rectangle """
+        return {'x': self.x, 'y': self.y, 'id': self.id,
+                'height': self.height, 'width': self.width}
+
+    def update(self, *args, **kwargs):
+        """ Upate the rectangle attributes """
+        attributes = ["id", "width", "height", "x", "y"]
+        i = 0
+        if args:
+            for arg in args:
+                setattr(self, attributes[i], arg)
+                i += 1
         else:
-            self.__y = value
+            for key, value in kwargs.items():
+                setattr(self, key, value)
