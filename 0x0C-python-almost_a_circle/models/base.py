@@ -1,76 +1,77 @@
 #!/usr/bin/python3
-""" Base Class """
+""" This is the base class for all the files here """
+
+
 import json
 
 
 class Base:
-    """ Base class for all classes """
+    """
+    Base class
+    Attributes:
+        __nb_objects(int): class attribute
+        id(int): id of object
+    """
     __nb_objects = 0
 
     def __init__(self, id=None):
-        """ Init method
-        id: id cannot be none and will always be an integer
-        """
+        """ Constructor for Base class"""
         if id is not None:
             self.id = id
         else:
             Base.__nb_objects += 1
             self.id = Base.__nb_objects
 
-    @staticmethod
-    def validator(attribute, name):
-        """Validator and height and width"""
-        if not isinstance(attribute, int):
-            raise TypeError(f"{name} must be an integer")
-        if attribute <= 0:
-            raise TypeError(f"{name} must be > 0")
+    def integer_validator(self, name, value):
+        """ Integer validtor for width and height """
+        if not isinstance(value, int):
+            raise TypeError("{} must be an integer".format(name))
+        if value <= 0:
+            raise ValueError("{} must be > 0".format(name))
 
-    @staticmethod
-    def validator2(attribute, name):
-        """Validate x and y"""
-        if not isinstance(attribute, int):
-            raise TypeError(f"{name} must be an integer")
-        if attribute < 0:
-            raise ValueError(f"{name} must be >= 0")
+    def integer_validator2(self, name, value):
+        """ Integer validator for x and y """
+        if not isinstance(value, int):
+            raise TypeError("{} must be an integer".format(name))
+        if value < 0:
+            raise ValueError("{} must be >= 0".format(name))
 
     @staticmethod
     def to_json_string(list_dictionaries):
-        """ Returns the JSON string representation of list_dictionaries"""
-        if list_dictionaries is None:
-            return "[]"
-        else:
-            return json.dumps(list_dictionaries)
+        """ Return json representation of list dictionaries"""
+        return json.dumps(list_dictionaries or [])
 
     @classmethod
     def save_to_file(cls, list_objs):
-        """ Writes the json representation of list_objs to a file """
-        if list_objs is None:
-            return []
+        """ Writes a json string to a file """
+        if list_objs:
+            j = cls.to_json_string([obj.to_dictionary() for obj in list_objs])
         else:
-            filename = cls.__name__+".json"
-            with open(filename, mode="w", encoding="utf-8") as file:
-                json_list = [obj.to_dictionary() for obj in list_objs]
-                json.dump(json_list, file)
+            j = "[]"
+        with open(cls.__name__ + ".json", mode='w') as f:
+            f.write(j)
 
     @staticmethod
     def from_json_string(json_string):
-        """ Retunrs the list of json representation """
-        return json.loads(json_string)
+        """ Return  a list representation json string """
+        if json_string:
+            return json.loads(json_string)
+        return []
 
     @classmethod
     def create(cls, **dictionary):
-        """ Retunrs an instance with all attributes already set """
+        """ Returns an instance of all attributes """
         dummy_instance = cls(1, 1)
         dummy_instance.update(**dictionary)
         return dummy_instance
 
     @classmethod
     def load_from_file(cls):
-        """ Returns a list of instances """
+        """ Return list of instances """
         name = cls.__name__ + ".json"
         try:
             with open(name) as f:
                 j = cls.from_json_string(f.read())
-                return [cls.create(**x) for x in j]
+            return [cls.create(**x) for x in j]
         except FileNotFoundError:
             return []
