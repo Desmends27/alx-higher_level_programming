@@ -17,8 +17,6 @@ class Student:
         """Returns the dictionary representation
         all if attrs is none, others based on the string in attrs
         """
-        if attrs.len == 0:
-            return self.__dict__
         if attrs:
             attrs_dict = {}
             for attr in attrs:
