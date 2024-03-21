@@ -7,14 +7,23 @@ class Rectangle {
     }
   }
 
-  print () {
+  print (letter = 'X') {
     for (let i = 0; i < this.height; i++) {
       let x = '';
       for (let j = 0; j < this.width; j++) {
-        x += 'X';
+        x += letter;
       }
       console.log(x);
     }
+  }
+
+  rotate () {
+    [[this.width], [this.height]] = [[this.height], [this.width]];
+  }
+
+  double () {
+    this.width *= 2;
+    this.height *= 2;
   }
 }
 
