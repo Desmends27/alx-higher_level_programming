@@ -1,14 +1,11 @@
 #!/usr/bin/node
-const { argv } = require('node:process');
-const number = argv[2];
-
-if (!number) {
+if (process.argv[2] === undefined || isNaN(process.argv[2])) {
   console.log('Missing size');
-}
-for (let i = 0; i < number; i++) {
-  let x = '';
-  for (let j = 0; j < number; j++) {
-    x += 'X';
+} else {
+  const x = Number(process.argv[2]);
+  let i = 0;
+  while (i < x) {
+    console.log('X'.repeat(x));
+    i++;
   }
-  console.log(x);
 }
